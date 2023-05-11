@@ -1,7 +1,12 @@
+name: Test and Deploy
 
+on:
+  push:
+    branches: [ main ]
+
+jobs:
   build:
     name: Build and Deploy
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
