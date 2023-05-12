@@ -1,5 +1,5 @@
 const {sequelize} = require('./db');
-const {Quote} = require('./qoutes.js');
+const {Quote} = require('./quotes.js');
 const {User} = require('./User.js');
 const {quotes,users} = require('./seedData');
 

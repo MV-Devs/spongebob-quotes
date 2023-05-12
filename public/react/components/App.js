@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SaucesList} from './SaucesList';
 import { ItemsList} from './ItemsList';
-import { SingleViewItem } from './SingleViewItem';
+import { Quote } from './Quote';
 import { UpdateItem } from './UpdateItem';
 
 import { AddItem} from './AddItem';
@@ -13,65 +13,57 @@ import apiURL from '../api';
 
 export const App = () => {
 
-	const [sauces, setSauces] = useState([]);
-	const [items, setItems] = useState([]);
-	const [singleViewItem, setSingleViewItem] = useState(null);
-	const [isAddingItem, setIsAddingItem] = useState(false);
-	const [isDeleted, setIsDeleted] = useState(false);
-	const [isUpdating, setIsUpdating] = useState(false);
+	const [quote, setQuote] = useState([]);
+	const [quotes, setQuotes] = useState([]);
+	// const [singleViewQuote, setSingleViewQuote] = useState(null);
+	// const [isAddingItem, setIsAddingItem] = useState(false);
+	// const [isDeleted, setIsDeleted] = useState(false);
+	// const [isUpdating, setIsUpdating] = useState(false);
 
-	async function fetchSauces(){
+	async function fetchQuotes(){
 		try {
-			const response = await fetch(`${apiURL}/sauces`);
-			const saucesData = await response.json();
+			const response = await fetch(`${apiURL}/quotes/all`);
+			const quoteData = await response.json();
 			
-			setSauces(saucesData);
+			setQuotes(quoteData);
+			setQuote(quoteData[0])
+			console.log(quoteData);
 		} catch (err) {
 			console.log("Oh no an error! ", err)
 		}
 	}
 
-	async function fetchItems(){
-		try {
-			const response = await fetch(`${apiURL}/items`);
-			const itemsData = await response.json();
-			
-			setItems(itemsData);
-		} catch (err) {
-			console.log("Oh no an error! ", err)
-		}
-	}
-
-	async function fetchSingleItem(id){
-		try {
-		  const response = await fetch(`${apiURL}/items/${id}`);
-		  const item = await response.json();
-		  setSingleViewItem(item);
-		} catch (err) {
-		  console.log("Oh no an error! ", err);
-		}
-	  }
+	// async function fetchSingleItem(id){
+	// 	try {
+	// 	  const response = await fetch(`${apiURL}/items/${id}`);
+	// 	  const item = await response.json();
+	// 	  setSingleViewItem(item);
+	// 	} catch (err) {
+	// 	  console.log("Oh no an error! ", err);
+	// 	}
+	//   }
 
 	// useEffect(() => {
 	// 	fetchSauces();
 	// }, []);
 
 	useEffect(() => {
-		fetchItems();
+		fetchQuotes();
 	}, []);
 
 	return (
 		<main>	
-	  <h1>Inventory App</h1>
+	  {/* <h1>Spongebob Quote Generator</h1>
 	  {isUpdating ? (
 	  	<UpdateItem props={singleViewItem} setIsUpdating={setIsUpdating} isUpdating={isUpdating} setSingleViewItem={setSingleViewItem}/>
 	  ) : isAddingItem ? (
 		<AddItem setIsAddingItem={setIsAddingItem}/>
-	  ) : singleViewItem ? (
-		<SingleViewItem props={singleViewItem} setSingleViewItem={setSingleViewItem} isDeleted={isDeleted} setIsDeleted={setIsDeleted} isUpdating={isUpdating} setIsUpdating={setIsUpdating}/> 
+	  ) : quote ? (
+		<Quote quote={quote} setQuote={setQuote} isDeleted={isDeleted} setIsDeleted={setIsDeleted} isUpdating={isUpdating} setIsUpdating={setIsUpdating}/> 
 	  ) : (
 			<div id="items"><ItemsList items={items} handleClick={fetchSingleItem} setIsAddingItem={setIsAddingItem}/></div>
-	  )}
+	  )} */}
+	  <Quote quote={quote} />
 		</main>
 	)
 }
