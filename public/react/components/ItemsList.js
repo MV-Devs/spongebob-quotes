@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from './Item';
+import { Item } from './Quote';
 
 
 export const ItemsList = ({items, handleClick,setIsAddingItem}) => {

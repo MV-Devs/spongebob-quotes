@@ -25,8 +25,6 @@ app.get('/', async (req, res, next) => {
     }
 });
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
 
 // Middleware function to authenticate user using JWT
 const authenticateUser = async (req, res, next) => {
@@ -112,7 +110,7 @@ const authenticateUser = async (req, res, next) => {
   
   
   // Route handler to retrieve all entries for admin user
-  app.get('/quotes/all',authenticateAdmin, async (req, res) => {
+  app.get('/quotes/all', async (req, res) => {
     try {
       const quotes = await Quote.findAll();
       res.json(quotes);
