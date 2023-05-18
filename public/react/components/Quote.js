@@ -11,7 +11,7 @@ export const Quote = () => {
 			console.log(apiURL);
 			const response = await fetch(`${apiURL}/quotes/all`);
 			const quoteData = await response.json();
-			
+			//change
 			setQuotes(quoteData);
       getRandomQuote(quoteData);
 			// setQuote(quoteData[0])
