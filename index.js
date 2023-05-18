@@ -5,20 +5,24 @@ const morgan = require('morgan');
 const cors = require('cors');
 const { User, Quote } = require('./db');
 const {JWT_SECRET_user,JWT_SECRET_admin} = process.env;
-
+const router = express.Router();
+app.use("/", router)
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
+const { QueryInterface } = require('sequelize');
 
-app.use(morgan('dev'));
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+router.use(morgan('dev'));
+router.use(cors());
+router.use(express.json());
+router.use(express.urlencoded({extended:true}));
 
 app.get('/', async (req, res, next) => {
     try {
-      res.send(`
-        <h1>Welcome to Spongebob Land!</h1>
-      `);
+      const quotes = await Quote.findAll();
+      res.send(quotes);
+            // res.send(`
+      //   <h1>Welcome to Spongebob Land!</h1>
+      // `);
     } catch (error) {
       console.error(error);
       next(error)
@@ -63,7 +67,7 @@ const authenticateUser = async (req, res, next) => {
   };
   
   // Route handler to register a new user and new admin
-  app.post('/register', async (req, res) => {
+  router.post('/register', async (req, res) => {
     try {
       const { username, password, isAdmin } = req.body;
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -77,7 +81,7 @@ const authenticateUser = async (req, res, next) => {
   });
   
   // Route handler to login a new user and new admin
-  app.post('/login', async (req, res) => {
+  router.post('/login', async (req, res) => {
     try {
       const { username, password } = req.body;
       const user = await User.findOne({ where: { username } });
@@ -97,7 +101,7 @@ const authenticateUser = async (req, res, next) => {
   });
 
   // Route handler to retrieve entries for authenticated user
-  app.get('/quotes', authenticateUser, async (req, res) => {
+  router.get('/quotes', authenticateUser, async (req, res) => {
     try {
       const userId = req.user.id;
       const quotes = await Quote.findAll({ where: { userId }});
@@ -110,7 +114,7 @@ const authenticateUser = async (req, res, next) => {
   
   
   // Route handler to retrieve all entries for admin user
-  app.get('/quotes/all', async (req, res) => {
+  router.get('/quotes/all', async (req, res) => {
     try {
       const quotes = await Quote.findAll();
       res.json(quotes);
@@ -122,7 +126,7 @@ const authenticateUser = async (req, res, next) => {
   });
 
   // Route handler to create an entry for authenticated user and 
-app.post('/quotes', authenticateUser, async (req, res) => {
+router.post('/quotes', authenticateUser, async (req, res) => {
     try {
       const { name, quote } = req.body;
       const userId = req.user.id;
@@ -135,7 +139,7 @@ app.post('/quotes', authenticateUser, async (req, res) => {
   });
   
   // Route handler to edit an entry for authenticated user
-  app.put('/quotes/:id', authenticateUser, async (req, res) => {
+  router.put('/quotes/:id', authenticateUser, async (req, res) => {
     try {
       const entryId = req.params.id;
       const userId = req.user.id;
@@ -153,7 +157,7 @@ app.post('/quotes', authenticateUser, async (req, res) => {
   });
   
   // Route handler to delete an entry for authenticated user
-  app.delete('/quotes/:id', authenticateUser, async (req, res) => {
+  router.delete('/quotes/:id', authenticateUser, async (req, res) => {
     try {
       const entryId = req.params.id;
       const userId = req.user.id;
@@ -170,7 +174,7 @@ app.post('/quotes', authenticateUser, async (req, res) => {
   });
   
   // Route handler to update user information for admin user
-app.put('/users/:id', authenticateAdmin, async (req, res) => {
+router.put('/users/:id', authenticateAdmin, async (req, res) => {
     const { id } = req.params;
     const { username, password } = req.body;
     try {
@@ -190,7 +194,7 @@ app.put('/users/:id', authenticateAdmin, async (req, res) => {
   });
   
   // Route handler to delete entry for admin user
-  app.delete('/users/:id', authenticateAdmin, async (req, res) => {
+  router.delete('/users/:id', authenticateAdmin, async (req, res) => {
     const { id } = req.params;
     try {
       const entry = await User.findOne({ where: { id } });

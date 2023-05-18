@@ -13,25 +13,27 @@ import apiURL from '../api';
 
 export const App = () => {
 
-	const [quote, setQuote] = useState([]);
+	
 	const [quotes, setQuotes] = useState([]);
 	// const [singleViewQuote, setSingleViewQuote] = useState(null);
 	// const [isAddingItem, setIsAddingItem] = useState(false);
 	// const [isDeleted, setIsDeleted] = useState(false);
 	// const [isUpdating, setIsUpdating] = useState(false);
 
-	async function fetchQuotes(){
-		try {
-			const response = await fetch(`${apiURL}/quotes/all`);
-			const quoteData = await response.json();
+	// async function fetchQuotes(){
+	// 	try {
+	// 		console.log(apiURL);
+	// 		const response = await fetch(`${apiURL}/quotes/all`);
+	// 		const quoteData = await response.json();
 			
-			setQuotes(quoteData);
-			setQuote(quoteData[0])
-			console.log(quoteData);
-		} catch (err) {
-			console.log("Oh no an error! ", err)
-		}
-	}
+	// 		setQuotes(quoteData);
+	// 		// setQuote(quoteData[0])
+	// 		console.log("fetch quotes",quoteData);
+
+	// 	} catch (err) {
+	// 		console.log("Oh no an error! ", err)
+	// 	}
+	// }
 
 	// async function fetchSingleItem(id){
 	// 	try {
@@ -47,9 +49,9 @@ export const App = () => {
 	// 	fetchSauces();
 	// }, []);
 
-	useEffect(() => {
-		fetchQuotes();
-	}, []);
+	// useEffect(() => {
+	// 	fetchQuotes();
+	// }, []);
 
 	return (
 		<main>	
@@ -63,7 +65,7 @@ export const App = () => {
 	  ) : (
 			<div id="items"><ItemsList items={items} handleClick={fetchSingleItem} setIsAddingItem={setIsAddingItem}/></div>
 	  )} */}
-	  <Quote quote={quote} />
+	  <Quote />
 		</main>
 	)
 }
