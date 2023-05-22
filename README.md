@@ -10,6 +10,7 @@ As a user of the inventory app, you can:
 ## Getting Started
 
 1. `npm install`
-2. `npm run seed`
-3. `npm run server-dev`
-4. In a seperate terminal, `npm run client-dev`
+2. `npm install boostrap`
+3. `npm run seed`
+4. `npm run server-dev`
+5. In a seperate terminal, `npm run client-dev`
