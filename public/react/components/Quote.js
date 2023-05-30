@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import image from "../img/spongebob-desktop-background.jpg"; 
 import apiURL from '../api';
 
 export const Quote = () => {
@@ -39,10 +40,16 @@ export const Quote = () => {
     // const result = RandomQuote(quotes)
     // console.log(result)
     return <>
-      <h3 className="quote"> quote:{quote}</h3>
-      <p className="itemsInfo">character name:{name}</p>
+    <div style={{ backgroundImage: `url(${image})` }}>
+  
+      <h3 className="quote"> Quote: {quote}</h3>
+      <p className="characterInfo">Character: {name}</p>
       {/* <img src={props.item.image} onClick={() => props.handleClick(props.item.id)}/> */}
-      <div id="newQuoteButton"><button onClick={() => getRandomQuote(quotes)} >New Quote</button></div>
+      <div id="newQuoteButton"><button onClick={() => getRandomQuote(quotes)} >Click for A New Quote</button></div>
+</div>
+      {/* <div className="spongebobBackground" style={{ backgroundImage:`url(${image})`,backgroundRepeat:"no-repeat" }}>
+        Welcome to the Spongebob Quote App
+      </div> */}
       {
         // quotes.map((quote, idx) => {
         //   return <Quote quote={quote} key={idx} handleClick={handleClick} />
