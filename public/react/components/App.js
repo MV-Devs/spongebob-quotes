@@ -5,6 +5,7 @@ import { Quote } from './Quote';
 import { AddEditQuote } from './AddEditQuote';
 import { UpdateItem } from './UpdateItem';
 
+
 import { AddItem} from './AddItem';
 
 
@@ -56,7 +57,9 @@ export const App = () => {
 
 	return (
 		<main>	
-	  {/* <h1>Spongebob Quote Generator</h1>
+	  {
+	  
+	  /* <h1>Spongebob Quote Generator</h1>
 	  {isUpdating ? (
 	  	<UpdateItem props={singleViewItem} setIsUpdating={setIsUpdating} isUpdating={isUpdating} setSingleViewItem={setSingleViewItem}/>
 	  ) : isAddingItem ? (
