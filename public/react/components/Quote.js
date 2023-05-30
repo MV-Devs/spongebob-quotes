@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import image from "../img/spongebob-desktop-background.jpg"; 
 import apiURL from '../api';
+import LoginPage from './LoginPage';
 
 export const Quote = () => {
   const [quote, setQuote] = useState('');
   const [name, setName] = useState('');
   const [quotes, setQuotes] = useState([]);
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   async function fetchQuotes(){
 		try {
 			console.log(apiURL);
@@ -35,6 +37,14 @@ export const Quote = () => {
         setQuote(item.quote);
         setName(item.name);
       }
+    }
+
+    const handleLogin = (user) =>{
+        setIsLoggedIn
+    }
+
+    if (!isLoggedIn) {
+        return <LoginPage onLogin={handleLogin} />
     }
  
     // const result = RandomQuote(quotes)
