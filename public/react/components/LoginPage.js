@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
+import image from "../components/spongebob_header.jpg";
 
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -24,15 +25,12 @@ const LoginPage = ({ onLogin }) => {
         console.log('Login failed');
       }
     } catch (error) {
-      console.log('Error during login:', error);
+      console.log('login Error:', error);
     }
   };
 
   return (
-    <div className="login-page"> 
-    {/* <div className='banner'>
-    <h1>Welcome</h1>
-     </div> */}
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} > 
       <form className="login-form" onSubmit={handleLogin}>
         <input
           type="text"
@@ -47,12 +45,14 @@ const LoginPage = ({ onLogin }) => {
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          
         />
         <button type="submit" className="login-button">
           Login
         </button>
       </form>
     </div>
+    
   );
 };
 

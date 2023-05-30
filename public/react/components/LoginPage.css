@@ -2,12 +2,15 @@
     width: 100x;
 } */
 
+
+
 .login-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #f2f2f2;
+    height: 1000px;
+    /* background-image: url('Bottom-Exterior-Nickelodeon.jpg'); */
+    background-repeat: no-repeat;
   }
   
   .login-form {
@@ -26,24 +29,23 @@
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #dddddd;
+    border: 1px solid #f0e7e7;
     border-radius: 4px;
   }
   
   .login-button {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     background-color: #007bff;
     border: none;
     border-radius: 4px;
     color: #ffffff;
     font-weight: bold;
-    cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   .login-button:hover {
-    background-color: #e60d0d;
+    background-color: #db8484;
   }
   
   
