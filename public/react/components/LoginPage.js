@@ -32,6 +32,7 @@ export const LoginPage = ({ onLogin }) => {
   return (
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}} > 
       <form className="login-form" onSubmit={handleLogin}>
+      <h1 className='bann'>SpongeBob SquarePants</h1>
         <input
           type="text"
           className="login-input"

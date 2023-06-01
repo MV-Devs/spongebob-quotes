@@ -27,19 +27,23 @@
   border-radius: 4px;
 }
 
+.banner{
+  font-size: 25px;
+}
+
 .login-button {
   width: 100%;
   padding: 15px;
   background-color: #007bff;
   border: none;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #ffffff;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
-  background-color: #db8484;
+  background-color: #000000;
 }
   
   
