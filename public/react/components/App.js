@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SaucesList} from './SaucesList';
 import { ItemsList} from './ItemsList';
 import { Quote } from './Quote';
+import { LoginPage } from './LoginPage';
 import { AddEditQuote } from './AddEditQuote';
 import { UpdateItem } from './UpdateItem';
 
@@ -66,7 +67,7 @@ export const App = () => {
 	  ) : (
 			<div id="items"><ItemsList items={items} handleClick={fetchSingleItem} setIsAddingItem={setIsAddingItem}/></div>
 	  )} */}
-	  <Quote />
+	  <LoginPage />
 		</main>
 	)
 }
