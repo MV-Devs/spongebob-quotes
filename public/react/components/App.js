@@ -67,7 +67,7 @@ export const App = () => {
 	  ) : (
 			<div id="items"><ItemsList items={items} handleClick={fetchSingleItem} setIsAddingItem={setIsAddingItem}/></div>
 	  )} */}
-	  <AddEditQuote />
+	  <LoginPage />
 		</main>
 	)
 }
