@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { SaucesList} from './SaucesList';
 import { ItemsList} from './ItemsList';
 import { Quote } from './Quote';
+import { LoginPage } from './LoginPage';
 import { AddEditQuote } from './AddEditQuote';
 import { UpdateItem } from './UpdateItem';
-
 
 import { AddItem} from './AddItem';
 
@@ -57,9 +57,7 @@ export const App = () => {
 
 	return (
 		<main>	
-	  {
-	  
-	  /* <h1>Spongebob Quote Generator</h1>
+	  {/* <h1>Spongebob Quote Generator</h1>
 	  {isUpdating ? (
 	  	<UpdateItem props={singleViewItem} setIsUpdating={setIsUpdating} isUpdating={isUpdating} setSingleViewItem={setSingleViewItem}/>
 	  ) : isAddingItem ? (
@@ -69,7 +67,7 @@ export const App = () => {
 	  ) : (
 			<div id="items"><ItemsList items={items} handleClick={fetchSingleItem} setIsAddingItem={setIsAddingItem}/></div>
 	  )} */}
-	  <Quote />
+	  <AddEditQuote />
 		</main>
 	)
 }

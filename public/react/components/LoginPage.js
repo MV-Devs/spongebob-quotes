@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
-import image from "../components/spongebob_header.jpg";
+import image from "../components/images/spongebob_header.jpg";
 
-const LoginPage = ({ onLogin }) => {
+export const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -45,14 +45,14 @@ const LoginPage = ({ onLogin }) => {
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          
+
         />
         <button type="submit" className="login-button">
           Login
         </button>
       </form>
     </div>
-    
+
   );
 };
 
